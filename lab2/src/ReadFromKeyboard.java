@@ -32,7 +32,7 @@ public class ReadFromKeyboard {
 
     private void delete(String username){
         for(int i=0; i<Users.size(); i++){
-            if (Users[i].username == username){
+            if (Users.get(i).username == username){
                 Users.remove(i);
             }
         }
@@ -58,6 +58,7 @@ public class ReadFromKeyboard {
         c.delete("Ion");
 
         c.showUsers();
+        
     }
 }
 
