@@ -6,6 +6,7 @@ public class DBConnection {
     private static final String USER = "Serban";
     private static final String PASSWROD = "Gherut09";
 
+
     private static Connection conn;
     private static DBConnection instance;
 
@@ -25,11 +26,11 @@ public class DBConnection {
         return instance;
     }
 
-    public static Connection getContext(){
+    public static Connection getConn(){
         return conn;
     }
-    public static void setContext(Connection context){
-        DBConnection.conn = context;
+    public static void setConn(Connection conn){
+        DBConnection.conn = conn;
     }
     public static void setInstance(DBConnection instance){
         DBConnection.instance = instance;
