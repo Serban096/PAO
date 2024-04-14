@@ -19,7 +19,7 @@ public class AmbulantaRepository implements GenericRepository<Ambulanta> {
     }
 
     public void add(Ambulanta ambulanta) {
-        String sql = "INSERT INTO ambulanta (ambulanta_id, nr_inmatriculare, kilometraj, an_achizitie, an_revizie) " +
+        String sql = "INSERT INTO ambulanta (ambulanta_id, numar_inmatriculare, kilometraj, an_achizitie, an_revizie) " +
                 "VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
@@ -47,7 +47,7 @@ public class AmbulantaRepository implements GenericRepository<Ambulanta> {
                         resultSet.getInt("ambulanta_id"),
                         null,
                         null,
-                        resultSet.getString("nr_inmatriculare"),
+                        resultSet.getString("numar_inmatriculare"),
                         resultSet.getInt("kilometraj"),
                         resultSet.getInt("an_achizitie"),
                         resultSet.getInt("an_revizie")
@@ -69,8 +69,8 @@ public class AmbulantaRepository implements GenericRepository<Ambulanta> {
                 Ambulanta ambulanta = new Ambulanta(
                         resultSet.getInt("ambulanta_id"),
                         null,
-                        null, 
-                        resultSet.getString("nr_inmatriculare"),
+                        null,
+                        resultSet.getString("numar_inmatriculare"),
                         resultSet.getInt("kilometraj"),
                         resultSet.getInt("an_achizitie"),
                         resultSet.getInt("an_revizie")
@@ -84,7 +84,7 @@ public class AmbulantaRepository implements GenericRepository<Ambulanta> {
     }
 
     public void update(Ambulanta ambulanta) {
-        String sql = "UPDATE ambulanta SET nr_inmatriculare = ?, kilometraj = ?, an_achizitie = ?, an_revizie = ? " +
+        String sql = "UPDATE ambulanta SET numar_inmatriculare = ?, kilometraj = ?, an_achizitie = ?, an_revizie = ? " +
                 "WHERE ambulanta_id = ?";
         try {
             PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);

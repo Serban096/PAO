@@ -6,7 +6,7 @@ public class Ambulanta {
     private int ambulanta_id;
     private ArrayList<Pacient> pacienti;
     private ArrayList<Paramedic> paramedici;
-    private String nr_inmatriculare;
+    private String numar_inmatriculare;
     private int kilometraj;
     private int an_achizitie;
     private int an_revizie;
@@ -16,7 +16,7 @@ public class Ambulanta {
         this.ambulanta_id = ambulanta_id;
         this.pacienti = pacienti;
         this.paramedici = paramedici;
-        this.nr_inmatriculare = nr_inmatriculare;
+        this.numar_inmatriculare = nr_inmatriculare;
         this.kilometraj = kilometraj;
         this.an_achizitie = an_achizitie;
         this.an_revizie = an_revizie;
@@ -47,11 +47,11 @@ public class Ambulanta {
     }
 
     public String getNr_inmatriculare() {
-        return nr_inmatriculare;
+        return numar_inmatriculare;
     }
 
     public void setNr_inmatriculare(String nr_inmatriculare) {
-        this.nr_inmatriculare = nr_inmatriculare;
+        this.numar_inmatriculare = nr_inmatriculare;
     }
 
     public int getKilometraj() {

@@ -4,7 +4,7 @@ import java.sql.*;
 public class DBConnection {
     private static final String URL = "jdbc:oracle:thin:@localhost:1522:XE";
     private static final String USER = "Serban";
-    private static final String PASSWROD = "Gherut09";
+    private static final String PASSWROD = "parola";
 
 
     private static Connection conn;
