@@ -86,4 +86,9 @@ public class Pacient {
     public void setCnp(long cnp) {
         this.cnp = cnp;
     }
+
+    @Override
+    public String toString() {
+        return STR."Pacient{pacient_id=\{pacient_id}, ambulanta_id=\{ambulanta_id}, nume='\{nume}\{'\''}, varsta=\{varsta}, greutate=\{greutate}, grupa_sange='\{grupa_sange}\{'\''}, cnp=\{cnp}, ambulanta=\{ambulanta != null ? ambulanta.getNr_inmatriculare() : "null"}\{'}'}";
+    }
 }

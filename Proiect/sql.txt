@@ -1,0 +1,52 @@
+create table AMBULANTA(
+    ambulanta_id number(4) constraint pk_ambulanta primary key,
+    numar_inmatriculare varchar(10) not null,
+    kilometraj number(7) not null,
+    an_achizitie number(4) not null,
+    an_revizie number(4) not null
+);
+
+create table PARAMEDIC(
+    paramedic_id number(4) constraint pk_paramedic primary key,
+    ambulanta_id number(4) not null,
+    nume varchar2(50) not null,
+    varsta number(3) not null,
+    salariu number(10) not null,
+	foreign key(ambulanta_id) references AMBULANTA(ambulanta_id)
+);
+
+create table PACIENT(
+    pacient_id number(4) constraint pk_pacient primary key,
+    ambulanta_id number(4) not null,
+    nume varchar2(50) not null,
+    varsta number(2) not null,
+    greutate number(5, 2) not null,
+    grupa_sange varchar2(2) not null,
+    cnp number(15) not null,
+    foreign key(ambulanta_id) references AMBULANTA(ambulanta_id) 
+);
+
+create table MEDIC(
+    medic_id number(4) constraint pk_medic primary key,
+    nume varchar2(50) not null,
+    varsta number(2) not null,
+    specializare varchar2(50) not null,
+    salariu number(7) not null,
+    numar_telefon varchar2(10) not null
+);
+
+create table TRATAMENT(
+    tratament_id number(4) primary key, 
+    nume varchar(50) not null,
+    durata number(3) not null,
+    pret number(8) not null
+);
+
+create table MEDIC_TRATEAZA_PACIENT(
+    medic_id number(4) not null,
+    pacient_id number(4) not null,
+    tratament_id number(4) not null,
+    foreign key(medic_id) references MEDIC(medic_id),
+    foreign key(pacient_id) references PACIENT(pacient_id),
+    foreign key(tratament_id) references TRATAMENT(tratament_id)
+);

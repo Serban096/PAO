@@ -77,4 +77,10 @@ public class Ambulanta {
     public void setAn_revizie(int an_revizie) {
         this.an_revizie = an_revizie;
     }
+
+    @Override
+    public String toString() {
+        return STR."Ambulanta {ambulanta_id=\{ambulanta_id}, numar_inmatriculare='\{numar_inmatriculare}\{'\''}, kilometraj=\{kilometraj}, an_achizitie=\{an_achizitie}, an_revizie=\{an_revizie}}";
+
+    }
 }

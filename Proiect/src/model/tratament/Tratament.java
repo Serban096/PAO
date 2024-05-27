@@ -44,4 +44,9 @@ public class Tratament {
     public void setPret(int pret) {
         this.pret = pret;
     }
+
+    @Override
+    public String toString() {
+        return STR."Tratament{tratament_id=\{tratament_id}, nume='\{nume}\{'\''}, durata=\{durata}, pret=\{pret}\{'}'}";
+    }
 }

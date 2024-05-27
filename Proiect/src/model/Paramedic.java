@@ -64,4 +64,9 @@ public class Paramedic {
     public void setSalariu(int salariu) {
         this.salariu = salariu;
     }
+
+    @Override
+    public String toString() {
+        return STR."Paramedic{paramedic_id=\{paramedic_id}, ambulanta_id=\{ambulanta_id}, nume='\{nume}\{'\''}, varsta=\{varsta}, salariu=\{salariu}, ambulanta=\{ambulanta != null ? ambulanta.getNr_inmatriculare() : "null"}\{'}'}";
+    }
 }

@@ -65,4 +65,9 @@ public class Medic {
     public void setNr_telefon(String numar_telefon) {
         this.numar_telefon = numar_telefon;
     }
+
+    @Override
+    public String toString() {
+        return STR."Medic{medic_id=\{medic_id}, nume='\{nume}\{'\''}, varsta=\{varsta}, specializare='\{specializare}\{'\''}, salariu=\{salariu}, numar_telefon='\{numar_telefon}\{'\''}\{'}'}";
+    }
 }
