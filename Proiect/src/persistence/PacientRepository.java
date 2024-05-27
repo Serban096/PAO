@@ -35,6 +35,7 @@ public class PacientRepository implements GenericRepository<Pacient> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Add Pacient");
     }
 
     public Pacient get(int id) {
@@ -66,7 +67,7 @@ public class PacientRepository implements GenericRepository<Pacient> {
         ArrayList<Pacient> pacienti = new ArrayList<>();
         String sql = "SELECT * FROM pacient";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Pacient pacient = new Pacient(
@@ -84,6 +85,7 @@ public class PacientRepository implements GenericRepository<Pacient> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Get All Pacient");
         return pacienti;
     }
 
@@ -104,6 +106,7 @@ public class PacientRepository implements GenericRepository<Pacient> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Update Pacient");
     }
 
     public void delete(Pacient pacient) {
@@ -116,5 +119,6 @@ public class PacientRepository implements GenericRepository<Pacient> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Delete Pacient");
     }
 }

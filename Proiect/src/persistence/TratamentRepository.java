@@ -33,6 +33,7 @@ public class TratamentRepository implements GenericRepository<Tratament>{
         catch(SQLException ex){
             throw new RuntimeException(ex);
         }
+        audit.write("Add Tratament");
     }
     public Tratament get(int id) {
         Tratament t = new Tratament();
@@ -72,6 +73,7 @@ public class TratamentRepository implements GenericRepository<Tratament>{
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Get All Tratament");
         return tratamente;
     }
 
@@ -79,7 +81,7 @@ public class TratamentRepository implements GenericRepository<Tratament>{
         String sql = "UPDATE tratament SET nume = ?, durata = ?, pret = ? WHERE tratament_id = ?";
         try {
             OraclePreparedStatement statement = (OraclePreparedStatement)
-                    DBConnection.getConn().prepareStatement(sql);
+                    connection.getConn().prepareStatement(sql);
             statement.setString(1, t.getNume());
             statement.setInt(2, t.getDurata());
             statement.setInt(3, t.getPret());
@@ -89,6 +91,7 @@ public class TratamentRepository implements GenericRepository<Tratament>{
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Update Tratament");
     }
 
     public void delete(Tratament t) {
@@ -102,5 +105,6 @@ public class TratamentRepository implements GenericRepository<Tratament>{
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Delete Tratament");
     }
 }

@@ -19,7 +19,7 @@ public class MedicRepository implements GenericRepository<Medic> {
         String sql = "INSERT INTO medic (medic_id, nume, varsta, specializare, salariu, numar_telefon) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, medic.getMedic_id());
             statement.setString(2, medic.getNume());
             statement.setInt(3, medic.getVarsta());
@@ -31,13 +31,14 @@ public class MedicRepository implements GenericRepository<Medic> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Add Medic");
     }
 
     public Medic get(int id) {
         Medic medic = null;
         String sql = "SELECT * FROM medic WHERE medic_id = ?";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -60,7 +61,7 @@ public class MedicRepository implements GenericRepository<Medic> {
         ArrayList<Medic> medici = new ArrayList<>();
         String sql = "SELECT * FROM medic";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Medic medic = new Medic(
@@ -76,6 +77,7 @@ public class MedicRepository implements GenericRepository<Medic> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Get All Medic");
         return medici;
     }
 
@@ -83,7 +85,7 @@ public class MedicRepository implements GenericRepository<Medic> {
         String sql = "UPDATE medic SET nume = ?, varsta = ?, specializare = ?, salariu = ?, numar_telefon = ? " +
                 "WHERE medic_id = ?";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setString(1, medic.getNume());
             statement.setInt(2, medic.getVarsta());
             statement.setString(3, medic.getSpecializare());
@@ -95,17 +97,19 @@ public class MedicRepository implements GenericRepository<Medic> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Update Medic");
     }
 
     public void delete(Medic medic) {
         String sql = "DELETE FROM medic WHERE medic_id = ?";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, medic.getMedic_id());
             statement.executeUpdate();
             System.out.println("Medic deleted successfully!");
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Delete Medic");
     }
 }

@@ -4,7 +4,7 @@ import java.sql.*;
 public class DBConnection {
     private static final String URL = "jdbc:oracle:thin:@localhost:1522:XE";
     private static final String USER = "Serban";
-    private static final String PASSWROD = "parola";
+    private static final String PASSWORD = "parola";
 
 
     private static Connection conn;
@@ -12,9 +12,9 @@ public class DBConnection {
 
     private DBConnection(){
         try{
-            conn = DriverManager.getConnection(URL, USER, PASSWROD);
-            if(conn != null)
-                System.out.println("Te-ai conectat la baza de date");
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+//            if(conn != null)
+//                System.out.println("Te-ai conectat la baza de date");
         } catch(SQLException ex){
             System.out.println("Error connectiong to database" + ex.getMessage());
         }

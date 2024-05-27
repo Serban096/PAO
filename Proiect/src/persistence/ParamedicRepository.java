@@ -33,13 +33,14 @@ public class ParamedicRepository implements GenericRepository<Paramedic> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Add Paramedic");
     }
 
     public Paramedic get(int id) {
         Paramedic paramedic = null;
         String sql = "SELECT * FROM paramedic WHERE paramedic_id = ?";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -78,6 +79,7 @@ public class ParamedicRepository implements GenericRepository<Paramedic> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Get All Paramedic");
         return paramedici;
     }
 
@@ -96,6 +98,7 @@ public class ParamedicRepository implements GenericRepository<Paramedic> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Update Paramedic");
     }
 
     public void delete(Paramedic paramedic) {
@@ -108,5 +111,6 @@ public class ParamedicRepository implements GenericRepository<Paramedic> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        audit.write("Delete Paramedic");
     }
 }
