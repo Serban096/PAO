@@ -22,7 +22,7 @@ public class PacientRepository implements GenericRepository<Pacient> {
         String sql = "INSERT INTO pacient (pacient_id, ambulanta_id, nume, varsta, greutate, grupa_sange, cnp) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, pacient.getPacient_id());
             statement.setInt(2, pacient.getAmbulanta_id());
             statement.setString(3, pacient.getNume());

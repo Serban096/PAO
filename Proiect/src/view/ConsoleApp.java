@@ -2,9 +2,11 @@ package view;
 
 import model.*;
 import model.tratament.Tratament;
+import model.tratament.TratamentChirurgical;
 import persistence.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
     public class ConsoleApp {
@@ -139,8 +141,29 @@ import java.util.Scanner;
         }
 
         private void viewAllAmbulances() {
-            System.out.println("\nAll Ambulances:");
             ArrayList<Ambulanta> ambulances = ambulantaRepository.getAll();
+            System.out.println("1. Sort by licence plate");
+            System.out.println("2. Sort by kilometers");
+            System.out.println("3. Sort by purchase year");
+            System.out.println("4. Back to menu");
+
+            int k = scanner.nextInt();
+            scanner.nextLine();
+            switch (k) {
+                case 1:
+                    ambulances.sort(Comparator.comparing(Ambulanta::getNr_inmatriculare));
+                    break;
+                case 2:
+                    ambulances.sort(Comparator.comparingInt(Ambulanta::getKilometraj));
+                    break;
+                case 3:
+                    ambulances.sort(Comparator.comparing(Ambulanta::getAn_achizitie));
+                    break;
+                default:
+                    return;
+            }
+            System.out.println("\nAll Ambulances:");
+
             for (Ambulanta ambulance : ambulances) {
                 System.out.println(ambulance);
             }
@@ -255,8 +278,29 @@ import java.util.Scanner;
         }
 
         private void viewAllMedics() {
-            System.out.println("List of all Medics:");
             ArrayList<Medic> medics = medicRepository.getAll();
+            System.out.println("1. Sort by name");
+            System.out.println("2. Sort by age");
+            System.out.println("3. Sort by salary");
+            System.out.println("4. Back to menu");
+
+            int k = scanner.nextInt();
+            scanner.nextLine();
+            switch (k) {
+                case 1:
+                    medics.sort(Comparator.comparing(Medic::getNume));
+                    break;
+                case 2:
+                    medics.sort(Comparator.comparingInt(Medic::getVarsta));
+                    break;
+                case 3:
+                    medics.sort(Comparator.comparing(Medic::getSalariu));
+                    break;
+                default:
+                    return;
+            }
+            System.out.println("List of all Medics:");
+
             for (Medic medic : medics) {
                 System.out.println(medic);
             }
@@ -311,7 +355,7 @@ import java.util.Scanner;
 
         private void managePatients() {
             while (true) {
-                System.out.println("\n--- Manage Patients ---");
+                System.out.println("\nManage Patients");
                 System.out.println("1. Add Patient");
                 System.out.println("2. View All Patients");
                 System.out.println("3. Update Patient");
@@ -384,8 +428,28 @@ import java.util.Scanner;
         }
 
         private void viewAllPatients() {
-            System.out.println("\nAll Patients:");
             ArrayList<Pacient> patients = pacientRepository.getAll();
+            System.out.println("1. Sort by name");
+            System.out.println("2. Sort by age");
+            System.out.println("3. Sort by blood type");
+            System.out.println("4. Back to menu");
+
+            int k = scanner.nextInt();
+            scanner.nextLine();
+            switch (k) {
+                case 1:
+                    patients.sort(Comparator.comparing(Pacient::getNume));
+                    break;
+                case 2:
+                    patients.sort(Comparator.comparingInt(Pacient::getVarsta));
+                    break;
+                case 3:
+                    patients.sort(Comparator.comparing(Pacient::getGrupa_sange));
+                    break;
+                default:
+                    return;
+            }
+            System.out.println("\nAll Patients:");
             for (Pacient patient : patients) {
                 System.out.println(patient.toString());
             }
@@ -515,8 +579,29 @@ import java.util.Scanner;
         }
 
         private void viewAllParamedics() {
-            System.out.println("\nViewing All Paramedics:");
             ArrayList<Paramedic> paramedics = paramedicRepository.getAll();
+            System.out.println("1. Sort by name");
+            System.out.println("2. Sort by age");
+            System.out.println("3. Sort by blood type");
+            System.out.println("4. Back to menu");
+
+            int k = scanner.nextInt();
+            scanner.nextLine();
+            switch (k) {
+                case 1:
+                    paramedics.sort(Comparator.comparing(Paramedic::getNume));
+                    break;
+                case 2:
+                    paramedics.sort(Comparator.comparingInt(Paramedic::getVarsta));
+                    break;
+                case 3:
+                    paramedics.sort(Comparator.comparing(Paramedic::getSalariu));
+                    break;
+                default:
+                    return;
+            }
+            System.out.println("\nViewing All Paramedics:");
+
             for (Paramedic paramedic : paramedics) {
                 System.out.println(paramedic);
             }
@@ -619,8 +704,29 @@ import java.util.Scanner;
         }
 
         private void viewAllTreatments() {
-            System.out.println("\nViewing All Treatments:");
             ArrayList<Tratament> treatments = tratamentRepository.getAll();
+            System.out.println("1. Sort by Id");
+            System.out.println("2. Sort by duration");
+            System.out.println("3. Sort by price");
+            System.out.println("4. Back to menu");
+
+            int k = scanner.nextInt();
+            scanner.nextLine();
+            switch (k) {
+                case 1:
+                    treatments.sort(Comparator.comparing(Tratament::getTratament_id));
+                    break;
+                case 2:
+                    treatments.sort(Comparator.comparingInt(Tratament::getDurata));
+                    break;
+                case 3:
+                    treatments.sort(Comparator.comparing(Tratament::getPret));
+                    break;
+                default:
+                    return;
+            }
+            System.out.println("\nViewing All Treatments:");
+
             for (Tratament treatment : treatments) {
                 System.out.println(treatment);
             }
