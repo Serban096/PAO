@@ -67,6 +67,6 @@ public class Paramedic {
 
     @Override
     public String toString() {
-        return STR."Paramedic{paramedic_id=\{paramedic_id}, ambulanta_id=\{ambulanta_id}, nume='\{nume}\{'\''}, varsta=\{varsta}, salariu=\{salariu}, ambulanta=\{ambulanta != null ? ambulanta.getNr_inmatriculare() : "null"}\{'}'}";
+        return STR."Paramedic{paramedic_id=\{paramedic_id}, ambulanta_id=\{ambulanta_id}, nume='\{nume}\{'\''}, varsta=\{varsta}, salariu=\{salariu}}";
     }
 }

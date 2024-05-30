@@ -22,7 +22,7 @@ public class TratamentRepository implements GenericRepository<Tratament>{
                 + "VALUES (?, ? ,?, ?)";
         try {
             OraclePreparedStatement statement = (OraclePreparedStatement)
-                    DBConnection.getConn().prepareStatement(sql);
+                    connection.getConn().prepareStatement(sql);
             statement.setInt(1, t.getTratament_id());
             statement.setString(2, t.getNume());
             statement.setInt(3, t.getDurata());
@@ -40,7 +40,7 @@ public class TratamentRepository implements GenericRepository<Tratament>{
         String sql = "SELECT * FROM tratament WHERE tratament_id = ?";
         try {
             OraclePreparedStatement statement = (OraclePreparedStatement)
-                    DBConnection.getConn().prepareStatement(sql);
+                    connection.getConn().prepareStatement(sql);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -60,7 +60,7 @@ public class TratamentRepository implements GenericRepository<Tratament>{
         String sql = "SELECT * FROM tratament";
         try {
             OraclePreparedStatement statement = (OraclePreparedStatement)
-                    DBConnection.getConn().prepareStatement(sql);
+                    connection.getConn().prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Tratament t = new TratamentChirurgical();
@@ -98,7 +98,7 @@ public class TratamentRepository implements GenericRepository<Tratament>{
         String sql = "DELETE FROM tratament WHERE tratament_id = ?";
         try {
             OraclePreparedStatement statement = (OraclePreparedStatement)
-                    DBConnection.getConn().prepareStatement(sql);
+                    connection.getConn().prepareStatement(sql);
             statement.setInt(1, t.getTratament_id());
             statement.executeUpdate();
             System.out.println("Tratament deleted successfully!");

@@ -42,7 +42,7 @@ public class PacientRepository implements GenericRepository<Pacient> {
         Pacient pacient = null;
         String sql = "SELECT * FROM pacient WHERE pacient_id = ?";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -93,7 +93,7 @@ public class PacientRepository implements GenericRepository<Pacient> {
         String sql = "UPDATE pacient SET ambulanta_id = ?, nume = ?, varsta = ?, greutate = ?, grupa_sange = ?, cnp = ? " +
                 "WHERE pacient_id = ?";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, pacient.getAmbulanta_id());
             statement.setString(2, pacient.getNume());
             statement.setInt(3, pacient.getVarsta());
@@ -112,7 +112,7 @@ public class PacientRepository implements GenericRepository<Pacient> {
     public void delete(Pacient pacient) {
         String sql = "DELETE FROM pacient WHERE pacient_id = ?";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, pacient.getPacient_id());
             statement.executeUpdate();
             System.out.println("Patient deleted successfully!");

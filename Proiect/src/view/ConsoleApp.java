@@ -582,7 +582,7 @@ import java.util.Scanner;
             ArrayList<Paramedic> paramedics = paramedicRepository.getAll();
             System.out.println("1. Sort by name");
             System.out.println("2. Sort by age");
-            System.out.println("3. Sort by blood type");
+            System.out.println("3. Sort by salary");
             System.out.println("4. Back to menu");
 
             int k = scanner.nextInt();

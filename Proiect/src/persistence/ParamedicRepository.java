@@ -22,7 +22,7 @@ public class ParamedicRepository implements GenericRepository<Paramedic> {
         String sql = "INSERT INTO paramedic (paramedic_id, ambulanta_id, nume, varsta, salariu) " +
                 "VALUES (?, ?, ?, ?, ?)";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, paramedic.getParamedic_id());
             statement.setInt(2, paramedic.getAmbulanta_id());
             statement.setString(3, paramedic.getNume());
@@ -63,7 +63,7 @@ public class ParamedicRepository implements GenericRepository<Paramedic> {
         ArrayList<Paramedic> paramedici = new ArrayList<>();
         String sql = "SELECT * FROM paramedic";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Paramedic paramedic = new Paramedic(
@@ -87,7 +87,7 @@ public class ParamedicRepository implements GenericRepository<Paramedic> {
         String sql = "UPDATE paramedic SET ambulanta_id = ?, nume = ?, varsta = ?, salariu = ? " +
                 "WHERE paramedic_id = ?";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, paramedic.getAmbulanta_id());
             statement.setString(2, paramedic.getNume());
             statement.setInt(3, paramedic.getVarsta());
@@ -104,7 +104,7 @@ public class ParamedicRepository implements GenericRepository<Paramedic> {
     public void delete(Paramedic paramedic) {
         String sql = "DELETE FROM paramedic WHERE paramedic_id = ?";
         try {
-            PreparedStatement statement = DBConnection.getConn().prepareStatement(sql);
+            PreparedStatement statement = connection.getConn().prepareStatement(sql);
             statement.setInt(1, paramedic.getParamedic_id());
             statement.executeUpdate();
             System.out.println("Paramedic deleted successfully!");
